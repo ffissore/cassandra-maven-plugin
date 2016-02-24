@@ -306,7 +306,6 @@ public final class Utils
             {
                 cassandraClient.set_keyspace(thriftApiOperation.getKeyspace());
             }
-            cassandraClient.set_cql_version(thriftApiOperation.getCqlVersion());
             thriftApiOperation.executeOperation(cassandraClient);
         } catch (ThriftApiExecutionException taee) 
         {

@@ -30,8 +30,6 @@ public abstract class AbstractCqlExecMojo extends AbstractCassandraMojo
      * @parameter expression="${cql.version}"
      * @since 1.2.1-2
      */
-    private String cqlVersion = "2.0.0";
-
     protected String readFile(File file) throws MojoExecutionException
     {
         if (!file.isFile())
@@ -91,8 +89,6 @@ public abstract class AbstractCqlExecMojo extends AbstractCassandraMojo
                 getLog().info("setting keyspace: " + keyspace);
                 setKeyspace(keyspace);
             }
-            getLog().info("setting cqlversion: " + cqlVersion);
-            setCqlVersion(cqlVersion);
         }
 
         @Override
@@ -112,13 +108,7 @@ public abstract class AbstractCqlExecMojo extends AbstractCassandraMojo
             ByteBuffer buf = ByteBufferUtil.bytes(statement);
             try
             {
-                if (cqlVersion.charAt(0) >= '3')
-                {
                     return client.execute_cql3_query(buf, Compression.NONE, ConsistencyLevel.ONE);
-                } else
-                {
-                    return client.execute_cql_query(buf, Compression.NONE);
-                }
             } catch (Exception e)
             {
                 getLog().debug(statement);
