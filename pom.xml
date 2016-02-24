@@ -28,6 +28,7 @@ under the License.
     <version>38</version>
   </parent>
 
+  <groupId>org.fissore.cassandra</groupId>
   <artifactId>cassandra-maven-plugin</artifactId>
   <version>2.2.5-t1-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
